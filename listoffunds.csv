@@ -1,52 +1,52 @@
-Name,Symbol,Strategy,Underlying,Equity Holdings
-Alliance Bernstein/TWM Global Equity & Covered Call Strategy Fund,TWMLX,Covered Call,Equity,Select
-AllianzGI Structured Return A-Class,AZIAX,Covered Call,Index,Whole
-AllianzGI US Equity-Hedged,AZUIX,Covered Call,Index,Whole
-AMG FQ US Equity - Institutional,MEQFX,Mixed,Equity,Select
-Arin Large Cap Theta - Institutional,AVOLX,Mixed,Index,Select
-ASTON/Anchor Capital Enhanced Equity - Institutional,AMDSX,Covered Call,Equity,Select
-BPV Low Volatility,BPVLX,Mixed,Index,Whole
-BPV Wealth Preservation Advisor,BPAPX,Mixed,Index,Whole
-Bridgeway Managed Volatility,BRBPX,Mixed,Equity,Select
-Camelot Excalibur Small Cap Income - Class A,CEXAX,Covered Call,Equity,Select
-Camelot Premium Return - Class A,CPRFX,Mixed,Equity,Select
-Catalyst/Lyons Hedged Premium Return - A,CLPAX,Mixed,Equity,Select
-Catalyst/MAP Global Capital Appreciation - A,CAXAX,Covered Call,Equity,Select
-Catalyst/SMH Total Return Income - Class A,TRIFX,Covered Call,Equity,Select
-Centaur Total Return,TILDX,Covered Call,Equity,Select
-Covered Bridge - Class A,TCBAX,Covered Call,Equity,Select
-Credit Suisse Volaris US Strategies - Class A,VAEAX,Mixed,Index,Select
-Crow Point Defined Risk Global Equity Income - Class A,CGHAX,Mixed,Equity,Select
-Dividend Plus Income Fund - Institutional,MAIPX,Mixed,Equity,Select
-Dunham Monthly Distribution Fund - Class A,DAMDX,Mixed,Equity,Select
-Eaton Vance Hedged Stock - Institutional,EROIX,Mixed,Equity,Select
-Frost Cinque Large Cap Buy-Write Equity - A,FCAWX,Covered Call,Equity,Select
-Gateway - Class A,GATEX,Mixed,Index,Whole
-Gateway Equity Call Premium - Class A,GCPAX,Covered Call,Index,Whole
-Glenmede Secured Options,GTSOX,Covered Call,Index,Select
-GMO Risk Premium - Class III,GMRPX,Mixed,Equity,Select
-Hatteras Disciplined Opportunity - Institutional,HDOIX,Mixed,Index,Whole
-Hussman Strategic Growth,HSGFX,Mixed,Equity,Select
-ICON Risk-Managed Balanced - Class A,IOCAX,Mixed,Index,Select
-Investment Partners Opportunities - Class A,IPOFX,Mixed,Equity,Select
-Iron Horse - Class A,IRHAX,Covered Call,Equity,Select
-Ironclad Managed Risk,IRONX,Mixed,Index,Select
-JHancock Redwood - Class A,JTRAX,Covered Call,Equity,Select
-KF Griffin Blue Chip Covered Call - Class A,KFGAX,Covered Call,Equity,Select
-Kinetics Multi-Disciplinary Advisor - Class A,KMDAX,Mixed,Equity,Select
-KKM ARMOR A,RMRAX,Mixed,Index,Select
-KKM US Equity ARMOR A,UMRAX,Mixed,Index,Select
-Leigh Baldwin Total Return,LEBOX,Mixed,Equity,Select
-LS Theta - Institutional,LQTIX,Mixed,Index,Select
-Madison Covered Call & Equity Income - Class A,MENAX,Covered Call,Equity,Select
-MD Sass Equity Income Plus Fund - Institutional,MDEIX,Mixed,Equity,Select
-RiverNorth Managed Volatility - Class R,RNBWX,Covered Call,Equity,Select
-RiverPark Structural Alpha - Institutional,RSAIX,Covered Call,Index,Whole
-RiverPark/Gargoyle Hedged Value - Institutional,RGHIX,Covered Call,Index,Select
-Russell Strategic Call Overwriting - Class S,ROWSX,Covered Call,Index,Select
-Schooner - Class A,SCNAX,Mixed,Index,Select
-Swan Defined Risk - Class I,SDRIX,Mixed,Index,Select
-Touchstone Dynamic Equity - Class Y,TDEYX,Covered Call,Index,Select
-Virtus Low Volatility Equity - Class A,VLVAX,Covered Call,Index,Select
-WP Large Cap Income Plus - Institutional,WPLCX,Covered Call,Equity,Select
-YCG Enhanced,YCGEX,Mixed,Equity,Select
+Name,Symbol,Strategy,Underlying,Equity Holdings,NAV,Net,Gross
+Alliance Bernstein/TWM Global Equity & Covered Call Strategy Fund,TWMLX,Covered Call,Equity,Select,329.88,0.0117,0.0117
+AllianzGI Structured Return A-Class,AZIAX,Covered Call,Index,Whole,25.73,0.0124,0.0543
+AllianzGI US Equity-Hedged,AZUIX,Covered Call,Index,Whole,15.96,0.0109,0.0658
+AMG FQ US Equity - Institutional,MEQFX,Mixed,Equity,Select,71.19,0.0079,0.0080
+Arin Large Cap Theta - Institutional,AVOLX,Mixed,Index,Select,7.94,0.0080,0.0516
+ASTON/Anchor Capital Enhanced Equity - Institutional,AMDSX,Covered Call,Equity,Select,224.33,0.0095,0.0095
+BPV Low Volatility,BPVLX,Mixed,Index,Whole,61.55,0.0058,0.0184
+BPV Wealth Preservation Advisor,BPAPX,Mixed,Index,Whole,83.85,0.0133,0.0177
+Bridgeway Managed Volatility,BRBPX,Mixed,Equity,Select,52.06,0.0095,0.0115
+Camelot Excalibur Small Cap Income - Class A,CEXAX,Covered Call,Equity,Select,9.81,0.0201,0.0610
+Camelot Premium Return - Class A,CPRFX,Mixed,Equity,Select,70.04,0.0225,0.0225
+Catalyst/Lyons Hedged Premium Return - A,CLPAX,Mixed,Equity,Select,7.26,0.0150,0.0462
+Catalyst/MAP Global Capital Appreciation - A,CAXAX,Covered Call,Equity,Select,33.39,0.0156,0.0178
+Catalyst/SMH Total Return Income - Class A,TRIFX,Covered Call,Equity,Select,36.42,0.0296,0.0300
+Centaur Total Return,TILDX,Covered Call,Equity,Select,43.09,0.0213,0.0239
+Covered Bridge - Class A,TCBAX,Covered Call,Equity,Select,28.04,0.0191,0.0270
+Credit Suisse Volaris US Strategies - Class A,VAEAX,Mixed,Index,Select,29.94,0.0155,0.0267
+Crow Point Defined Risk Global Equity Income - Class A,CGHAX,Mixed,Equity,Select,11.58,0.0126,0.0369
+Dividend Plus Income Fund - Institutional,MAIPX,Mixed,Equity,Select,104.77,0.0107,0.0125
+Dunham Monthly Distribution Fund - Class A,DAMDX,Mixed,Equity,Select,290.7,0.0204,0.0280
+Eaton Vance Hedged Stock - Institutional,EROIX,Mixed,Equity,Select,32.96,0.0090,0.0159
+Frost Cinque Large Cap Buy-Write Equity - A,FCAWX,Covered Call,Equity,Select,67.11,0.0102,0.0144
+Gateway - Class A,GATEX,Mixed,Index,Whole,8100,0.0094,0.0103
+Gateway Equity Call Premium - Class A,GCPAX,Covered Call,Index,Whole,28.66,0.0120,0.0374
+Glenmede Secured Options,GTSOX,Covered Call,Index,Select,361.15,0.0087,0.0087
+GMO Risk Premium - Class III,GMRPX,Mixed,Equity,Select,444.4,0.0061,0.0066
+Hatteras Disciplined Opportunity - Institutional,HDOIX,Mixed,Index,Whole,36.72,0.0175,0.0267
+Hussman Strategic Growth,HSGFX,Mixed,Equity,Select,827.04,0.0110,0.0115
+ICON Risk-Managed Balanced - Class A,IOCAX,Mixed,Index,Select,32.95,0.0145,0.0169
+Investment Partners Opportunities - Class A,IPOFX,Mixed,Equity,Select,7.65,0.0328,0.0456
+Iron Horse - Class A,IRHAX,Covered Call,Equity,Select,40.97,0.0186,0.0186
+Ironclad Managed Risk,IRONX,Mixed,Index,Select,331.37,0.0125,0.0126
+JHancock Redwood - Class A,JTRAX,Covered Call,Equity,Select,596.51,0.0162,0.0162
+KF Griffin Blue Chip Covered Call - Class A,KFGAX,Covered Call,Equity,Select,7.74,0.0176,0.0279
+Kinetics Multi-Disciplinary Advisor - Class A,KMDAX,Mixed,Equity,Select,141.76,0.0179,0.0213
+KKM ARMOR A,RMRAX,Mixed,Index,Select,10.75,0.0245,0.0247
+KKM US Equity ARMOR A,UMRAX,Mixed,Index,Select,36.22,0.0145,0.0153
+Leigh Baldwin Total Return,LEBOX,Mixed,Equity,Select,3.5,0.0287,0.0429
+LS Theta - Institutional,LQTIX,Mixed,Index,Select,8.24,0.0125,0.0169
+Madison Covered Call & Equity Income - Class A,MENAX,Covered Call,Equity,Select,60.56,0.0128,0.0128
+MD Sass Equity Income Plus Fund - Institutional,MDEIX,Mixed,Equity,Select,141.87,0.0075,0.0129
+RiverNorth Managed Volatility - Class R,RNBWX,Covered Call,Equity,Select,16.57,0.0182,0.0198
+RiverPark Structural Alpha - Institutional,RSAIX,Covered Call,Index,Whole,10.37,0.0175,0.0222
+RiverPark/Gargoyle Hedged Value - Institutional,RGHIX,Covered Call,Index,Select,72.1,0.0125,0.0117
+Russell Strategic Call Overwriting - Class S,ROWSX,Covered Call,Index,Select,89.08,0.0097,0.0119
+Schooner - Class A,SCNAX,Mixed,Index,Select,312.01,0.0174,0.0174
+Swan Defined Risk - Class I,SDRIX,Mixed,Index,Select,1040,0.0139,0.0139
+Touchstone Dynamic Equity - Class Y,TDEYX,Covered Call,Index,Select,77.35,0.0130,0.0196
+Virtus Low Volatility Equity - Class A,VLVAX,Covered Call,Index,Select,5.3,0.0635,0.0635
+WP Large Cap Income Plus - Institutional,WPLCX,Covered Call,Equity,Select,22.62,0.0338,0.0338
+YCG Enhanced,YCGEX,Mixed,Equity,Select,90.42,0.0139,0.0139

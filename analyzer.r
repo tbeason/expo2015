@@ -1,10 +1,9 @@
-fund.classes <- read.csv("~/GitHub/option-based-funds-paper/fund classes.csv", stringsAsFactors=FALSE)
-names(fund.classes) <- c("lowVol","lowVolBench","miscBench","threeFundPort","enhancedRet","assetAlloc")
-allFunds <- read.csv("~/GitHub/option-based-funds-paper/allfunds.csv", stringsAsFactors=FALSE,header=FALSE)
-toDate <- function(x) as.Date(x, origin = "1899-12-30")
-extraTickers<- read.zoo("~/GitHub/option-based-funds-paper/paper data.csv",header=TRUE,sep=",",FUN = toDate)
+funds <- read.csv("~/GitHub/expo2015/listoffunds.csv", stringsAsFactors=FALSE)
+allFunds <- funds$Symbol
 require(quantmod)
 require(plyr)
+require(xts)
+require(PerformanceAnalytics)
 
 getSymbols(allFunds, auto.assign=TRUE)
 
@@ -27,65 +26,86 @@ for(i in 1:length(allFunds))
     allPrices <- merge(allPrices,price)
   }
 }
-
-tfp <- (1000/as.numeric(allPrices$VBMFX.Adjusted[1]))*allPrices$VBMFX.Adjusted+
-  (1000/as.numeric(allPrices$VTSMX.Adjusted[1]))*allPrices$VTSMX.Adjusted+
-  (1000/as.numeric(allPrices$VGTSX.Adjusted[1]))*allPrices$VGTSX.Adjusted
-names(tfp) <- "tfp"
-allPrices <- na.omit(merge(allPrices,tfp))
-xtra <- as.xts(extraTickers)
-allPrices <- na.omit(merge(allPrices,xtra))
+names(allPrices) <- allFunds
 calcRet <- function(pr)
 {
   dailyReturn(pr,leading=FALSE)
 }
-allReturns <- "[<-"(allP, , vapply(allP, calcRet, FUN.VALUE = numeric(nrow(allP))))
-maxDrawDown <- adply(allReturns,2,min,na.rm=TRUE)
-highestReturn <- adply(allReturns,2,max,na.rm=TRUE)
-meanReturn <- adply(allReturns,2,mean,na.rm=TRUE)
-stdReturn <- adply(allReturns,2,sd,na.rm=TRUE)
-summaryTable <- cbind(meanReturn,stdReturn[,2],maxDrawDown[,2],highestReturn[,2])
-names(summaryTable) <- c("name","mean","sd","low","high")
-summaryTable$name <- c(allFunds[,1],"TFP",names(xtra))
+
+for(i in 1:length(allFunds))
+{
+  if(i == 1)
+  {
+    allReturns <- calcRet(allPrices[,i])
+  }
+  if(i > 1)
+  {
+    allReturns <- merge(allReturns,calcRet(allPrices[,i]))
+  }
+}
+names(allReturns) <- allFunds
+
+MDD <- t(maxDrawdown(allReturns))
+ExpShortfall <- t(ES(allReturns,p=0.95,method="modified",portfolio_method="single"))
+annReturn <- t(Return.annualized(allReturns,scale=252))
+stdReturn <- t(StdDev.annualized(allReturns,scale=252))
+
+# getSymbols("^GSPC")
+# SP <- GSPC$GSPC.Adjusted
+# SP.daily <- calcRet(SP)
+# SP.annualized <- t(Return.annualized(SP.daily,scale=252))
+# SP.sd <- t(StdDev.annualized(SP.daily,scale=252))
+# SP.mdd <- t(maxDrawdown(SP.daily))
+# SP.ES <- t(ES(SP.daily,p=0.95,method="modified",portfolio_method="single"))
+# Excess_SP <- t(Return.annualized.excess(allReturns,SP.daily,scale=252))
+# IR_SP <- t(InformationRatio(allReturns,SP.daily,scale=252))
+# ActivePrem_SP <- t(ActiveReturn(allReturns,SP.daily,scale=252))
+# 
+# getSymbols("^RUA")
+# R3000 <- RUA$RUA.Adjusted
+# R3000.daily <- calcRet(R3000)
+# R3000.annualized <- t(Return.annualized(R3000.daily,scale=252))
+# R3000.sd <- t(StdDev.annualized(R3000.daily,scale=252))
+# R3000.mdd <- t(maxDrawdown(R3000.daily))
+# R3000.ES <- t(ES(R3000.daily,p=0.95,method="modified",portfolio_method="single"))
+# Excess_R3000 <- t(Return.annualized.excess(allReturns,R3000.daily,scale=252))
+# IR_R3000 <- t(InformationRatio(allReturns,R3000.daily,scale=252))
+# ActivePrem_R3000 <- t(ActiveReturn(allReturns,R3000.daily,scale=252))
+
+getSymbols("^BXM")
+BXM <- BXM$BXM.Adjusted
+BXM.daily <- calcRet(BXM)
+BXM.annualized <- t(Return.annualized(BXM.daily,scale=252))
+BXM.sd <- t(StdDev.annualized(BXM.daily,scale=252))
+BXM.mdd <- t(maxDrawdown(BXM.daily))
+BXM.ES <- t(ES(BXM.daily,p=0.95,method="modified",portfolio_method="single"))
+
+Excess_BXM <- t(Return.annualized.excess(allReturns,BXM.daily,scale=252))
+IR_BXM <- t(InformationRatio(allReturns,BXM.daily,scale=252))
+ActivePrem_BXM <- t(ActiveReturn(allReturns,BXM.daily,scale=252))
+
+summaryTable <- cbind(funds,annReturn,stdReturn,MDD,ExpShortfall,Excess_BXM,IR_BXM,ActivePrem_BXM)
 View(summaryTable)
 
-# plot all funds risk return
-ggplot(summaryTable) +
-  geom_point(aes(x=sd,y=mean)) +
-  geom_text(aes(x=sd,y=mean,label=name),size=4,hjust=0,vjust=0) +
-  labs(title = "Return vs Risk - All Funds") +
-  ylab("Mean Daily Return") +
-  xlab("Daily Standard Deviation") 
-  
-  
-write.csv(summaryTable,file="~/GitHub/option-based-funds-paper/table.csv")
-table <- read.csv("~/GitHub/option-based-funds-paper/table.csv", stringsAsFactors=FALSE)
-table2 <- table[,-1]
-
-#calc information ratio
-infr <- t(InformationRatio(allReturns,cbind(allReturns[,16:20],allReturns[,32:36]),scale=252))
-sum2 <- cbind(summaryTable,infr)
-
-lvGroup <- sum2[which(table2[,6]!=2),]
+CConly <- subset(summaryTable,Strategy=="Covered Call")
+coln <- which(summaryTable$Strategy == "Covered Call")
+chart.RiskReturnScatter(CConly[,9:10],Rf=0.00025,method="nocalc",add.boxplots=TRUE,add.sharpe=c(1,2))
+CC.ret <- allReturns[,coln]
+chart.RelativePerformance(CC.ret,BXM.daily,colorset=(1:23),main="Performance Relative to the BuyWrite Index (BXM)")
+chart.RelativePerformance(allReturns,BXM.daily)
 
 # plot all funds risk return
-ggplot(lvGroup) +
-  geom_point(aes(x=sd,y=mean)) +
-  geom_text(aes(x=sd,y=mean,label=name),size=4,hjust=0,vjust=0) +
-  labs(title = "Return vs Risk - Low Volatility Funds") +
-  ylab("Mean Daily Return") +
-  xlab("Daily Standard Deviation")
+# ggplot(as.data.frame(CConly)) +
+#   scale_color_manual(values = c("red", "green", "black","blue")) +     # need to tweak colors
+#   geom_point(aes(x=CConly[,10],y=CConly[,9],colour=factor(Underlying),size=factor(Net)))+       #want size to be by NAV
+#   geom_text(aes(x=CConly[,10],y=CConly[,9],label=CConly[,2],colour=factor(Equity.Holdings)),size=4,hjust=-0.1,vjust=0) +
+#   labs(title = "Return vs Risk - All Funds") +
+#   ylab("Annualized Return") +
+#   xlab("Annualized Standard Deviation") 
 
-erGroup <- sum2[which(table2[,6]!=1),]
-
-# plot all funds risk return
-ggplot(erGroup) +
-  geom_point(aes(x=sd,y=mean)) +
-  geom_text(aes(x=sd,y=mean,label=name),size=4,hjust=0,vjust=0) +
-  labs(title = "Return vs Risk - Enhanced Return Funds") +
-  ylab("Mean Daily Return") +
-  xlab("Daily Standard Deviation")
-
-write.csv(lvGroup,file="~/GitHub/option-based-funds-paper/lvGroup.csv")
-write.csv(erGroup,file="~/GitHub/option-based-funds-paper/erGroup.csv")
-
+resetPar <- function() {
+  dev.new()
+  op <- par(no.readonly = TRUE)
+  dev.off()
+  op
+}
