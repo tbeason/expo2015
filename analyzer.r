@@ -83,8 +83,9 @@ BXM.ES <- t(ES(BXM.daily,p=0.95,method="modified",portfolio_method="single"))
 Excess_BXM <- t(Return.annualized.excess(allReturns,BXM.daily,scale=252))
 IR_BXM <- t(InformationRatio(allReturns,BXM.daily,scale=252))
 ActivePrem_BXM <- t(ActiveReturn(allReturns,BXM.daily,scale=252))
-
-summaryTable <- cbind(funds,annReturn,stdReturn,MDD,ExpShortfall,Excess_BXM,IR_BXM,ActivePrem_BXM)
+msquare <- t(MSquared(na.omit(allReturns),na.omit(BXM.daily),scale=252))
+sharp <- t(SharpeRatio.annualized(na.omit(allReturns),scale=252))
+summaryTable <- cbind(funds,annReturn,stdReturn,MDD,ExpShortfall,Excess_BXM,IR_BXM,ActivePrem_BXM,msquare,sharp)
 View(summaryTable)
 
 CConly <- subset(summaryTable,Strategy=="Covered Call")
